@@ -8,7 +8,7 @@ Prepare the kubernetes cluster on AWS using terraform :
   install aws-iam-authenticator
   install eksctl
   
-2. copy vpc.tf and bucket.tf to your terraform server , and run "terraform apply"
+2. copy vpc.tf and bucket.tf (includes EKS configuration) to your terraform server , and run "terraform apply"
 
 3. wait for the deployment to finish.
 
@@ -31,3 +31,10 @@ Prepare the kubernetes cluster on AWS using terraform :
 8. wait for the jenkins deployment to be ready .
 
 9. connect to jenkins and configure it with admin user and add docker plugin.
+
+10. connect Jenkins to github repository to pull the source code and the docker file.
+
+11. create new item on jenkins and add github as a repository , add build docker image step from the dockerfile we have just pulled from the repository.
+
+12. post build : sudo docker run sudo docker run --rm -it gos3cve
+
