@@ -170,7 +170,7 @@ func main() {
 		var desc = data.CVEItems[i].Cve.Description.DescriptionData[0].Value
 		var id = data.CVEItems[i].Cve.CVEDataMeta.ID
 
-		if (strings.Contains(desc, "AWS") || strings.Contains(desc, "Azure") || strings.Contains(desc, "Kubernetes")){
+		if (strings.Contains(desc, "AWS") || strings.Contains(desc, "Jenkins") || strings.Contains(desc, "Kubernetes")){
 		//fmt.Println(data.CVEItems[i].Cve.CVEDataMeta.ID)
 		fmt.Println(desc)
 		f.WriteString(desc)
