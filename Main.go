@@ -7,6 +7,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/s3"
 	"io"
@@ -195,7 +196,7 @@ func main() {
 
 
 	// Create a single AWS session (we can re use this if we're uploading many files)
-	s, err := session.NewSession(&aws.Config{Region: aws.String(S3_REGION)})
+	s, err := session.NewSession(&aws.Config{Region: aws.String(S3_REGION), Credentials: credentials.NewStaticCredentials("AKIAWW7KSSAJJLPCIM7S", "yCu7I8q0DURqUJ9VOa1VbPg5C8ZALHfpIvHYAxw2","")})
 	if err != nil {
 		log.Fatal(err)
 	}
