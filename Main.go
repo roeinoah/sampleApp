@@ -196,7 +196,7 @@ func main() {
 
 
 	// Create a single AWS session (we can re use this if we're uploading many files)
-	s, err := session.NewSession(&aws.Config{Region: aws.String(S3_REGION), Credentials: credentials.NewStaticCredentials("AKIAWW7KSSAJJLPCIM7S", "yCu7I8q0DURqUJ9VOa1VbPg5C8ZALHfpIvHYAxw2","")})
+	s, err := session.NewSession(&aws.Config{Region: aws.String(S3_REGION)})
 	if err != nil {
 		log.Fatal(err)
 	}
