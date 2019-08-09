@@ -14,9 +14,11 @@ Prepare the kubernetes cluster on AWS using terraform :
 
 4. when it's done run the following commands : 
     
-      aws eks --region eu-central-1 update-kubeconfig --name terraform-eks-demo
-      terraform output config_map_aws_auth >> aws-auth-cm.yaml
-      kubectl apply -f aws-auth-cm.yaml
+      "aws eks --region eu-central-1 update-kubeconfig --name terraform-eks-demo"
+  
+      "terraform output config_map_aws_auth >> aws-auth-cm.yaml"
+      
+      "kubectl apply -f aws-auth-cm.yaml"
       
 5. wait for all the kuberenetes nodes to come up using : kubectl get nodes --watch
 
