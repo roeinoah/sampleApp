@@ -1,0 +1,16 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: sampleApp
+spec:
+  replicas: 1
+  template:
+    metadata:
+      label:
+        app: sampleApp
+    spec:
+      containers:
+      - name: sampleApp
+        image: roeinoah/sampleApp:latest
+        ports:
+        - containerPort: 8383

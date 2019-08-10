@@ -1,0 +1,36 @@
+node{
+
+  //Define all variables
+  def project = 'cve2s3'
+  def appName = 'sampleApp'
+  def imageVersion = 'latest'
+  def namespace = 'development'
+  def imageTag = "${project}/${appName}:${imageVersion}.${env.BUILD_NUMBER}"
+  def dockerhubrep = "roeinoah/sampleApp"
+  
+  //Checkout Code from Github
+  checkout scm
+  
+  //Stage 1 : Build the docker image.
+  stage('Build image') {
+      sh("docker build -t ${imageTag} .")
+  }
+  
+  //Stage 2 : Push the image to docker registry
+  stage('Push image to registry') {
+      sh("docker push ${dockerhubrep} ${imageTag}")
+  }
+  
+  //Stage 3 : Deploy Application
+  stage('Deploy Application') {
+       
+
+             
+                   sh("kubectl get ns ${namespace} || kubectl create ns ${namespace}")
+                   sh("sed -i.bak 's#/${project}/${appName}:${imageVersion}#${imageTag}#' ./k8s/*.yaml")
+                   sh("kubectl --namespace=${namespace} apply -f k8s/deployment.yaml")
+
+  
+
+}
+}
