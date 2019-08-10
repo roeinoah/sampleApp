@@ -32,9 +32,11 @@ Prepare the kubernetes cluster on AWS using terraform :
 
 9. connect to jenkins and configure it with admin user and add docker plugin.
 
-10. connect Jenkins to github repository to pull the source code and the docker file.
+10. connect Jenkins to github repository via webook to pull the source code and the docker file.
 
-11. create new item on jenkins and add github as a repository , add build docker image step from the dockerfile we have just pulled from the repository.
+11. copy the file called deployment.yaml to your server (the one which we will be using to deploy the app itself)
 
-12. post build : sudo docker run sudo docker run --rm -it gos3cve
+12. copy the jenkinsfile into jenkins , it will pull the source code + the dockerfile and build it , afterwards it will push it to     docker registry and finally it will deploy the app.
+
+
 
