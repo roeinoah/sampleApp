@@ -42,3 +42,4 @@ Prepare the kubernetes cluster on AWS using terraform :
 
 test
 test
+test
